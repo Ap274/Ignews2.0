@@ -21,3 +21,10 @@ Arquivo chamado index, naturalmente será o arquivo principal da aplicação.
 .Pasta styles - module.css é scoped
 .Para utilizar junto, é necessária a instalação do sass [yarn add sass]. Com isso, é necessário 
 trocar a nomeação do arquivo para home.module.scss e daí é possível utilizar o método cascata
+
+-- Configuração externa
+.file system rooting 
+. O _app (MyApp) é o componente que fica 'por fora' de todas as páginas. Se quisermos algo que se repita em todas as páginas
+colocaremos dentro desse arquivo. Ele vai ser recarregado toda vez que o usuário troca de página.
+. O _document funciona de forma semelhante ao _app, porém, ele só é carregado uma única vez.
+Ele pode ser comparado com o index.html no react.app
