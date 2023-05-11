@@ -16,3 +16,8 @@ Arquivo chamado index, naturalmente será o arquivo principal da aplicação.
 -- Adicionando typescript
 .yarn add typescript @types/react @types/node -D
 .Show, agora é trocar o nome dos arquivos p/ extensão do ts
+
+-- Estilização com SASS
+.Pasta styles - module.css é scoped
+.Para utilizar junto, é necessária a instalação do sass [yarn add sass]. Com isso, é necessário 
+trocar a nomeação do arquivo para home.module.scss e daí é possível utilizar o método cascata
