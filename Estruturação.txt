@@ -28,3 +28,8 @@ trocar a nomeação do arquivo para home.module.scss e daí é possível utiliza
 colocaremos dentro desse arquivo. Ele vai ser recarregado toda vez que o usuário troca de página.
 . O _document funciona de forma semelhante ao _app, porém, ele só é carregado uma única vez.
 Ele pode ser comparado com o index.html no react.app
+
+-- Title dinâmico por página
+.Com a tag Head do 'next/head', é possível adicionar um <title> para qualquer página, diretamente do seu arquivo, e que
+diretamente irá anexar à página principal. Dentro dessa <Head> é possível colocar <meta>'s e tudo mais. 
+.A partir disso, é preciso colocá-los dentro de um react fragment.

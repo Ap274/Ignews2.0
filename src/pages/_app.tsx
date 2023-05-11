@@ -1,11 +1,8 @@
 import { AppProps } from 'next/app'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return (
-    <>
-      <title>ig.news</title>
+  return (  
       <Component {...pageProps} />
-    </>
   )
 }
 
