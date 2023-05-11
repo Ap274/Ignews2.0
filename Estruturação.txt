@@ -33,3 +33,7 @@ Ele pode ser comparado com o index.html no react.app
 .Com a tag Head do 'next/head', é possível adicionar um <title> para qualquer página, diretamente do seu arquivo, e que
 diretamente irá anexar à página principal. Dentro dessa <Head> é possível colocar <meta>'s e tudo mais. 
 .A partir disso, é preciso colocá-los dentro de um react fragment.
+
+-- Estilo Global da aplicação (interfere em toda aplicação)
+.Mudança do nome do arquivo para global.scss -> chakra ui é bom nessa ajuda para cores 
+. CSS NÃO pode importar dentro do document, porque o _document não tá pronto ainda para compilar css
