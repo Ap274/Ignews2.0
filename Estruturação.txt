@@ -12,3 +12,7 @@ react-dom: 17.0.1 (versões utilizadas pelo Diego)
 .arquivo Index.js é um componente chamado Home (homepage da nossa aplicação)
 .Cada arquivo dentro da pasta Pages, acaba virando uma rota, menos o arquivo _app e _document. 
 Arquivo chamado index, naturalmente será o arquivo principal da aplicação.
+
+-- Adicionando typescript
+.yarn add typescript @types/react @types/node -D
+.Show, agora é trocar o nome dos arquivos p/ extensão do ts
