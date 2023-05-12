@@ -45,3 +45,12 @@ diretamente irá anexar à página principal. Dentro dessa <Head> é possível c
 . O header fica por volta de tudo, já o div fica por volta do conteúdo "dentro" do header.
 . As imagens no Next fica sempre dentro da pasta public, importando com o esquema padrão de '/'.
 . Como o Header aparecerá em todas as páginas da aplicação, é de se colocar no arquivo _app.tsx
+
+-- Componente SignIn 
+. É interessante fazer outro arquivo, pois o seu funcionamento 'não interfere' no restante dos componentes do Header. 
+Seu comportamento é isolado. Ao mudar, ele precisa ser renderizado novamente. Se ele estivesse conectado ao restante,
+todos precisariam recarregar. 
+. yarn add react-icons (utilizar o font awesome)
+. A estilização da margin (left) do botão é no componente Header, pois ele está relacionado com os componentes desse componente
+e não solto pela aplicação.
+ 
