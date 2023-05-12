@@ -60,3 +60,6 @@ e não solto pela aplicação.
 com o stripe para pagamentos e tudo mais, então com esse commit foi concluída a página home da
 aplicação
 
+-- Subscribe Button
+. É o contexto que define os espaçamentos dentro dos elementos dentro dele.
+
