@@ -74,3 +74,36 @@ até deletar os dados gerais da conta, por exemplo.
 
 . .env.local - arquivo de variáveis ambiente, variáveis que são diferentes de acordo com o ambiente que a aplicação está 
 rodando. Online, em testes, variando. 
+
+-- Consumindo API do Stripe (SSR - Server-side Rendering)
+. Realizar a primeira chamada pra API do Stripe, para obter as infos do produto que criamos
+. Ao usuário clicar em subscribe, eu preciso ter a referência de qual produto eu quero inscrever o usuário. Buscar esse
+produto assim que a página for renderizada. (layout shit - mudança de layout que pode ser percebida pelo usuário)
+. Quando eu quero fazer uma chamada API via SSR e não no Cliente Side R., dentro de uma página do Next (eu preciso repassar a informação 
+da página AO componente)
+. O nome da função PRECISA ser getServerSideProps, não pode ser de outra forma. Foi escrita em formato de const, porque dentro
+do Next conseguimos importar uma tipagem para essa função, chamada getServerSideProps
+. Se retornarmos/passarmos uma propriedade (por exemplo: props { nome: 'Fulano'}), conseguimos acessar o nome do usuário 
+através das props na Home, (console.log)
+. Se o console.log estivesse dentro do getServerSideProps, não aparecerá na tela, porque o getServerSideProps é executado
+na camada do servidor Node - Next -, e não no browser. Aparecerá, portanto, no console.
+
+. Para começarmos, e fazer a chamada para a API do Stripe, adicionando ela portanto na aplicação [yarn add stripe]
+. Com isso, criando uma página services, com um arquivo stripe.ts dentro, arquivo que vai definir a conexão com o Stripe
+
+. A partir disso, vamos utilizar essa API do Stripe para fazer uma requisição (index.tsx): https://stripe.com/docs/api/customers/list?lang=node
+await stripe.prices.retrieve() o retrieve é porque é apenas um preço, dai ali dentro vamos passar o id do preço -> indo 
+no produtos do stripe, clicar no próprio produto e copiar o api_id do PRICE, não do PRODUCT.
+. Em seguida passamos outro argumento chamado expand['product'], pois queremos as informações do produto. Pode-se analisar
+pela documentação aqui: https://stripe.com/docs/api/prices/retrieve.
+. A criação da const product (produto) é para nos fornecer os dados que precisamos do produto. O link acima mostra o nome
+das respostas.
+. Com isso, podemos passar nosso produto na página. Contudo, antes, precisamos tipar a Home, falando as propriedades que
+ele recebe. 
+Show, com isso, podemos colocar o amount do produto diretamente no span.
+. Agora, vale formatar o número do preço, para ficar com a sigla da moeda e tudo mais.
+
+. Ok, agora, precisaremos do PriceId que sobrou la no SubscribeButton, passando ele no SubscribeButton da Homepage
+. Como não iremos utilizar os dados do produto no momento, podemos excluir ,{expand: ['product']} do const price. Se quisermos
+mostrar o nome do produto, descrição dele e tudo mais, só fazer isso. Daí, dentro do price vai ter o nome do produto e tudo mais
+price.product.blabla
