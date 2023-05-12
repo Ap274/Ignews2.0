@@ -63,3 +63,14 @@ aplicação
 -- Subscribe Button
 . É o contexto que define os espaçamentos dentro dos elementos dentro dele.
 
+
+## INTEGRAÇÃO COM API (STRIPE)
+-- Configurando Stripe 
+. Plataforma para pagamentos com cartão de crédito, com ambiente de homolagação bem rápido.
+. A publishable key (desenvolvedores - chaves da API) é uma chave que é utilizada quando precisamos interagir com a 
+API do stripe através do nosso frontend (para informações públicas)
+. A secret key é [obviamente privada], com isso, caso em mãos erradas, a pessoa pode fazer de tudo na conta stripe,
+até deletar os dados gerais da conta, por exemplo.
+
+. .env.local - arquivo de variáveis ambiente, variáveis que são diferentes de acordo com o ambiente que a aplicação está 
+rodando. Online, em testes, variando. 
