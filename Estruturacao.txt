@@ -1,3 +1,4 @@
+##ESTRUTURA DA APLICAÇÃO
 -- Criação do projeto (e paralelamente conectando ao GitHub)
 .yarn create next-app [nome do projeto]
 .cd [nome do projeto]
@@ -39,7 +40,7 @@ diretamente irá anexar à página principal. Dentro dessa <Head> é possível c
 . CSS NÃO pode importar dentro do document, porque o _document não tá pronto ainda para compilar css
 
 
-##Componentes e Páginas
+##COMPONENTES E PÁGINAS
 -- Componente Header
 . O Next, nas páginas, nos obriga a utilizar o default para exportação, mas no caso dos componentes não iremos utilizar.
 . O header fica por volta de tudo, já o div fica por volta do conteúdo "dentro" do header.
@@ -53,4 +54,9 @@ todos precisariam recarregar.
 . yarn add react-icons (utilizar o font awesome)
 . A estilização da margin (left) do botão é no componente Header, pois ele está relacionado com os componentes desse componente
 e não solto pela aplicação.
- 
+
+-- Página Home
+. O botão subscribe now também será feito em um componente separado, porque terá conexão 
+com o stripe para pagamentos e tudo mais, então com esse commit foi concluída a página home da
+aplicação
+
