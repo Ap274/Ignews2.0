@@ -148,3 +148,22 @@ do arquivo como [id].tsx
 request.query
 . Esse método é muito utilizado para fazer a integração com alguma coisa terceira. Para fazer a autenticação, é importante
 para não precisar fazer vários tipos de rotas diferentes (um arquivo para cada tipo de autenticação)
+
+-- Autenticação com Next Auth
+. Seguindo o guia da documentaçã: https://next-auth.js.org/providers/github && https://next-auth.js.org/getting-started/example
+. Foi feito o código para adicionar API route, e com isso precisamos instalar o next auth [yarn add next-auth]
+[yarn add @types/next-auth -D] se necessário para as tipagens.
+. Para integrar o GitHub na nossa aplicação é preciso de duas infos de lá, clientId e clientSecret. É preciso criar isso
+no GitHub
+Settings - Developer Settings - OAuth Apps , e ao criar a aplicação, teremos o GITHUB_CLIENT_ID e GITHUB_CLIENT_SECRET para 
+utilizar na aplicação. (env.local)
+
+. No escopo (scope), temos a documentação: https://docs.github.com/pt/apps/oauth-apps/building-oauth-apps/scopes-for-oauth-apps
+Como queremos as informações básicas dos usuários, podemos utilizar a read:users
+. No SignInButton, que é o componente que precisamos fazer a autenticação, nós iremos importar a função signIn, que faz
+essa autenticação do usuário, e ela recebe por parâmetro qual tipo de autenticação a gente quer utilizar e, portanto,
+passaremos 'github'.
+
+. Vamos utilizar também um hook chamado useSession, que retorna informações se o usuário tem uma sessão ativa ou não, ou seja,
+se ele ta logado ou não.
+Como ele retorna várias coisas, vamos desestruturar e buscar a session.
