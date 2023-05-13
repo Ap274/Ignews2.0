@@ -1,3 +1,4 @@
+------------------------------------------FUNDAMENTOS DO NEXT.JS----------------------------------------------------------------------------------------------------------------------
 ##ESTRUTURA DA APLICAÇÃO
 -- Criação do projeto (e paralelamente conectando ao GitHub)
 .yarn create next-app [nome do projeto]
@@ -115,11 +116,25 @@ o HTML estático já pronto para o usuário.
 . Com isso, podemos mudar de getServerSideProps para getStaticProps (index.tsx). O conteúdo é o mesmo para todos os usuários
 que irão logar. Portanto, se tiver uma mensagem com "Olá Fulano", todos irão ler, mesmo quem se chama 'Ciclano'.
 . 3 principais formas de fazer uma chamada: 
-// Client-side
-// Server-side
-// Static Site Generation
-. Um bom exemplo foi:
-<!-- Para uma post de Blog por exemplo -->
-// Conteúdo (SSG)
-// Comentários (Client-side)
+    Client-side
+    Server-side
+    Static Site Generation
+. Um bom exemplo foi: Para uma post de Blog por exemplo
+    Conteúdo (SSG)
+    Comentários (Client-side)
 
+------------------------------------------BACKEND NO FRONTEND----------------------------------------------------------------------------------------------------------------------
+##API ROUTES NO NEXT.JS
+-- API routes no Next.js
+. File System Rooting, os arquivos dentro de pages viram páginas na nossa aplicação, menos o _app e _document.
+. Todos os arquivos que criarmos dentro dessa pasta api (criada dentro de pages), virarão rotas na nossa aplicação. 
+Cada arquivo vai se tornar numa rota do nosso backend (trazendo informações para a gente)
+. Como não irão mostrar componentes, podemos escrever com a extensão ts e não tsx.
+. Dentro das funções geralmente se recebem 2 parâmetros, request e response. O request são todos os dados da nossa requisição
+Criando um dado de usuário, dentro do request teremos os dados dele. O response é, claro, a resposta. Se estamos querendo
+a listagem de usuário, a resposta é uma listagem de usuário (do formato JSON).
+
+-- Estratégias de autenticação
+. Métodos de autenticação disponíveis no Next: JWT (Storage) / Next Auth (Social) / Cognito, Auth0
+. Nessa aplicação, será utilizado o modelo Next Auth, já tem suporte para fazer autenticação com o GitHub de forma simples
+e login de forma automática e mais fácil.
