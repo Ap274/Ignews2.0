@@ -138,3 +138,13 @@ a listagem de usuário, a resposta é uma listagem de usuário (do formato JSON)
 . Métodos de autenticação disponíveis no Next: JWT (Storage) / Next Auth (Social) / Cognito, Auth0
 . Nessa aplicação, será utilizado o modelo Next Auth, já tem suporte para fazer autenticação com o GitHub de forma simples
 e login de forma automática e mais fácil.
+. Documentação: https://next-auth.js.org/providers/github
+
+-- Parametrização nas rotas
+. Para uma rota em que se possa receber parâmetros, como nessa aplicação buscar o usuário pelo Id, podemos colocar o nome
+do arquivo como [id].tsx
+. //localhost:3000/api/users/1, retorna no console os parâmetros
+. Com o spread operator nos params, a partir do console.log(request.query), tudo passado após o users, vai vir dentro do
+request.query
+. Esse método é muito utilizado para fazer a integração com alguma coisa terceira. Para fazer a autenticação, é importante
+para não precisar fazer vários tipos de rotas diferentes (um arquivo para cada tipo de autenticação)
