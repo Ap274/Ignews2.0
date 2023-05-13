@@ -76,7 +76,7 @@ até deletar os dados gerais da conta, por exemplo.
 rodando. Online, em testes, variando. 
 
 -- Consumindo API do Stripe (SSR - Server-side Rendering)
-. Realizar a primeira chamada pra API do Stripe, para obter as infos do produto que criamos
+. Realizar a primeira chamada pra API do Stripe, para obter as infos do produto que criamos.
 . Ao usuário clicar em subscribe, eu preciso ter a referência de qual produto eu quero inscrever o usuário. Buscar esse
 produto assim que a página for renderizada. (layout shit - mudança de layout que pode ser percebida pelo usuário)
 . Quando eu quero fazer uma chamada API via SSR e não no Cliente Side R., dentro de uma página do Next (eu preciso repassar a informação 
@@ -107,3 +107,19 @@ Show, com isso, podemos colocar o amount do produto diretamente no span.
 . Como não iremos utilizar os dados do produto no momento, podemos excluir ,{expand: ['product']} do const price. Se quisermos
 mostrar o nome do produto, descrição dele e tudo mais, só fazer isso. Daí, dentro do price vai ter o nome do produto e tudo mais
 price.product.blabla
+
+-- Static Site Generation (SSG)
+. Se 1 milhão de usuários acessarem a página, 1 mi de vezes irá acontecer a chamada para o stripe e tudo mais. Como só estamos
+buscando o preço dos produtos e ele varia geralmente de mês em mês (no máx a cada 24hs), podemos usar o SSG para enviar
+o HTML estático já pronto para o usuário.
+. Com isso, podemos mudar de getServerSideProps para getStaticProps (index.tsx). O conteúdo é o mesmo para todos os usuários
+que irão logar. Portanto, se tiver uma mensagem com "Olá Fulano", todos irão ler, mesmo quem se chama 'Ciclano'.
+. 3 principais formas de fazer uma chamada: 
+// Client-side
+// Server-side
+// Static Site Generation
+. Um bom exemplo foi:
+<!-- Para uma post de Blog por exemplo -->
+// Conteúdo (SSG)
+// Comentários (Client-side)
+
