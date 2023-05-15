@@ -19,12 +19,8 @@ export const authOptions = {
     }),
   ],
 
-  jwt: {
-    signinKey: process.env.SIGNIN_KEY
-  },
-
   callbacks: {
-    async signIn({user, account, profile}) {
+    async signIn({user, account, profile }) {
       // console.log(user)
       const { email } = user
 

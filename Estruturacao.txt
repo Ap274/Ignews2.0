@@ -226,4 +226,21 @@ não, precisa realizar o login no GitHub com o método signIn
 acessados tanto no frontend quanto na camada backend, se estando no mesmo domínio). Com isso, conseguiremos acessar
 o token do usuário através de req.cookies. 
     Como queremos o usuário em si e não só os cookies: const session = await getSession({ req }) do método getSession
-    
+
+-- Redirecionando para o Stripe
+. Quando o usuário clicar em subscribe, nós precisamos chamar a API route que criamos no subscribe (rotas do backend do Next)
+Primeiro, nós precisamos de uma forma de comunicar o frontend com essas api routes. Como é uma rota do tipo POST, precisamos
+acessá-la via fetch ou axios. Utilizaremos o axios [yarn add axios]
+. Criar um arquivo chamado api.ts, importando o axios from 'axios'
+Ao emitirmos a url (colocando apenas a baseURL como '/api'), o axios irá aproveitar a url que já existe da aplicação
+
+. Fazer um trycatch no subscribeButton para ter uma tratativa de erro
+const response await api.post('/subscribe') o nome do arquivo é o nome da rota, por isso subscribe
+SESSIONID é o id da sessão que foi criada.
+
+. Criação do serviço stripe-js.ts para integração do stripe com o Browser (parte frontend); adicionar com isso uma outra
+biblioteca chamada [yarn add @stripe/stripe-js]
+   Nesse arquivo, precisamos passar a chave pública do Stripe --> Developers / API Key / publishable key
+
+. Para não dar erro no session.user.email, é preciso dar um [yarn add next] e configurar uma NEXTAUTH_SECRET=blablabla no env.local.
+ 
