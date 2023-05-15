@@ -203,3 +203,4 @@ salvar no banco de dados do fauna através do Client que fora configurado no fau
 
 . Caso o usuário já tenha sido criado, podemos atualizar os seus dados ou apenas não fazer nada.
 
+-- Verificação usuário duplicado
