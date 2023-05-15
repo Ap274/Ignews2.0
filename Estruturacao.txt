@@ -243,4 +243,13 @@ biblioteca chamada [yarn add @stripe/stripe-js]
    Nesse arquivo, precisamos passar a chave pública do Stripe --> Developers / API Key / publishable key
 
 . Para não dar erro no session.user.email, é preciso dar um [yarn add next] e configurar uma NEXTAUTH_SECRET=blablabla no env.local.
- 
+
+-- Evitando duplicação no Stripe
+. Para evitar que nosso usuário saia duplicado, nós iremos utilizar nosso banco de dados dentro do FaunaDB. Quando criarmos
+o usuário pela primeira vez, vamos salvar o id dele no stripe, junto com as informações já presentes no faunaDB. Dai,
+quando voltarmos de novo para a rota do subscribe, vamos verificar se o usuário já tem um id do stripe atribuído a ele.
+
+. Dar uma olhada na documentação: https://docs.fauna.com/fauna/current/api/fql/functions/update?lang=javascript. Ref é o id do usuário
+  Não conseguimos atualizar o funcionário diretamente através do id. Por isso, iremos dividir em 2 query's (subscribe.ts)
+
+  
