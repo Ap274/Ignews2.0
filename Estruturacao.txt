@@ -187,3 +187,19 @@ que fizermos no banco de dados, ficarão dentro de uma chave no documento chamad
 secreta (FAUNADB_KEY), elas NÃO podem ser feitas pelo lado do browser (operações de consulta no banco dentro de um componente,
 useEffect (ou quando o usuário clicar em um botão)). Elas só podem ser feitas dentro das minhas APIs routes (Pasta API - rotas 
 backend, podemos dizer assim), ou por dentro dos métodos getStaticProps || getServerSideProps.
+
+-- Configurando no GitHub
+. É bom ter um email público na conta do GitHub.
+
+-- Salvando usuário no banco
+. Salvar o usuário assim que ele fizer login na aplicação.
+
+. Com isso, https://next-auth.js.org/configuration/callbacks callbacks são funções que são executadas de forma automática pelo
+NextAuth assim que acontece alguma ação (por exemplo, sempre que o usuário faz login na aplicação, tem uma função signIn)
+que é executada.
+. Show, dando um console.log (no [...nextauth]), podemos ver que estamos recebendo os dados do usuário e, com isso, iremos
+salvar no banco de dados do fauna através do Client que fora configurado no fauna.ts
+. Na criação, o 'data' são os dados do usuário que a gente quer inserir.
+
+. Caso o usuário já tenha sido criado, podemos atualizar os seus dados ou apenas não fazer nada.
+
