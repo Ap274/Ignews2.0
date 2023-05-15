@@ -1,5 +1,5 @@
 ------------------------------------------FUNDAMENTOS DO NEXT.JS----------------------------------------------------------------------------------------------------------------------
-##ESTRUTURA DA APLICAÇÃO
+## ESTRUTURA DA APLICAÇÃO
 -- Criação do projeto (e paralelamente conectando ao GitHub)
 .yarn create next-app [nome do projeto]
 .cd [nome do projeto]
@@ -41,7 +41,7 @@ diretamente irá anexar à página principal. Dentro dessa <Head> é possível c
 . CSS NÃO pode importar dentro do document, porque o _document não tá pronto ainda para compilar css
 
 
-##COMPONENTES E PÁGINAS
+## COMPONENTES E PÁGINAS
 -- Componente Header
 . O Next, nas páginas, nos obriga a utilizar o default para exportação, mas no caso dos componentes não iremos utilizar.
 . O header fica por volta de tudo, já o div fica por volta do conteúdo "dentro" do header.
@@ -124,7 +124,7 @@ que irão logar. Portanto, se tiver uma mensagem com "Olá Fulano", todos irão 
     Comentários (Client-side)
 
 ------------------------------------------BACKEND NO FRONTEND----------------------------------------------------------------------------------------------------------------------
-##API ROUTES NO NEXT.JS
+## API ROUTES NO NEXT.JS
 -- API routes no Next.js
 . File System Rooting, os arquivos dentro de pages viram páginas na nossa aplicação, menos o _app e _document.
 . Todos os arquivos que criarmos dentro dessa pasta api (criada dentro de pages), virarão rotas na nossa aplicação. 
@@ -169,7 +169,7 @@ se ele ta logado ou não.
 Como ele retorna várias coisas, vamos desestruturar e buscar a session.
 
 
-##USANDO FAUNADB
+## USANDO FAUNADB
 -- Escolhendo um banco de dados
 . Assim que o usuário loga no nosso app, precisamos salvar algumas informações desse usuário em um banco de dados. Isso
 porque, precisamos saber qual usuário se inscreveu no stripe, quem fez o pagamento e tudo mais.
@@ -204,3 +204,26 @@ salvar no banco de dados do fauna através do Client que fora configurado no fau
 . Caso o usuário já tenha sido criado, podemos atualizar os seus dados ou apenas não fazer nada.
 
 -- Verificação usuário duplicado
+. Se não existe um usuário ao qual Match (Where no banco de dados) [If.Not.Exists.Match]
+
+
+## PAGAMENTOS NO STRIPE
+-- Gerando sessão de checkout
+. 'checkoutsession' é basicamente uma URL que a gente vai redirecionar o usuário, que vai preencher as infos de pagamento
+e, posteriormente, ser redirecionado de volta para a página da aplicação.
+. Criando uma função de inscrição no SubscribeButton, primeiro precisamos ver se o usuário tem uma 'sessão' ativa, se 
+não, precisa realizar o login no GitHub com o método signIn
+    Caso ele esteja logado, será feita a criação da checkout session
+
+. Caso queira deixar uma variável ambiente pública no Next, precisamos criá-la com o prefixo NEXT_PUBLIC
+
+. Para a inscrição, será criada uma rota API chamada subscribe.ts
+. res.setHeader('Allow', 'POST') explica ao frontend que o método que essa rota aceita é POST
+. billing_address_collection fala se queremos obrigar o usuário a preencher o endereço, ou deixar para o stripe 'resolver'
+. success e cancel_url é interessante colocar sempre em formato de variável ambiente, pelo .env.local
+
+. Como hoje o NextAuth salva o token do usuário logado dentro dos cookies dentro da nossa aplicação (os cookies podem ser
+acessados tanto no frontend quanto na camada backend, se estando no mesmo domínio). Com isso, conseguiremos acessar
+o token do usuário através de req.cookies. 
+    Como queremos o usuário em si e não só os cookies: const session = await getSession({ req }) do método getSession
+    
