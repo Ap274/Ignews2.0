@@ -167,3 +167,23 @@ passaremos 'github'.
 . Vamos utilizar também um hook chamado useSession, que retorna informações se o usuário tem uma sessão ativa ou não, ou seja,
 se ele ta logado ou não.
 Como ele retorna várias coisas, vamos desestruturar e buscar a session.
+
+
+##USANDO FAUNADB
+-- Escolhendo um banco de dados
+. Assim que o usuário loga no nosso app, precisamos salvar algumas informações desse usuário em um banco de dados. Isso
+porque, precisamos saber qual usuário se inscreveu no stripe, quem fez o pagamento e tudo mais.
+
+-- Configurando FaunaDB
+. Quando criar uma key nova no banco de dados, é importante criar uma "Role" nova apenas com as permissões que aquela
+role possa ter acesso. 
+. Quando necessário buscar um usuário através de algum atributo específico, podemos criar um índice. Isso torna a aplicação
+mais performática.
+Nos termos da index (ex.: user_by_email), chamaremos o Terms [termo] de data.email, isto é, todos os dados de um registro
+que fizermos no banco de dados, ficarão dentro de uma chave no documento chamada data.
+
+. instalação do FaunaDB na aplicação - [yarn add faunadb] e criando um arquivo services fauna.ts
+. TODAS AS OPERAÇÕES que eu fizer no banco de dados, ou no stripe ou em qualquer coisa, que precisam ter acesso a chave
+secreta (FAUNADB_KEY), elas NÃO podem ser feitas pelo lado do browser (operações de consulta no banco dentro de um componente,
+useEffect (ou quando o usuário clicar em um botão)). Elas só podem ser feitas dentro das minhas APIs routes (Pasta API - rotas 
+backend, podemos dizer assim), ou por dentro dos métodos getStaticProps || getServerSideProps.
