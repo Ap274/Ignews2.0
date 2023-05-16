@@ -25,7 +25,10 @@ export default async function handle(req: NextApiRequest, res: NextApiResponse) 
                 )
             )
         )
-        // console.log(user) - teremos um ref com um id no retorno desse 
+        // console.log(user) 
+        // teremos um ref com um id no retorno desse (email e stripe_customer_id) 
+        // console.log(session)
+        // retorna name, email e image do github
         
         let customerId = user.data.stripe_customer_id
         

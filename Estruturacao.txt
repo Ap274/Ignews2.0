@@ -252,4 +252,16 @@ quando voltarmos de novo para a rota do subscribe, vamos verificar se o usuário
 . Dar uma olhada na documentação: https://docs.fauna.com/fauna/current/api/fql/functions/update?lang=javascript. Ref é o id do usuário
   Não conseguimos atualizar o funcionário diretamente através do id. Por isso, iremos dividir em 2 query's (subscribe.ts)
 
-  
+
+## OUVINDO WEBHOOKS
+- Webhooks do Stripe
+. Basicamente é um pattern muito utilizado para integração entre sistemas na web. Uma aplicação terceira avisa nossa
+aplicação que algum evento aconteceu, por uma rota http na maioria das vezes.
+  Por exemplo: avisar à rota http://localhost:3000/api/stripe/webhooks que o cartão do cliente tal deu tal problema.
+ 
+. O Stripe tem um modelo de webhooks próprio: https://dashboard.stripe.com/test/webhooks
+. Stripe CLI é uma interface de linha de comando (software que executamos no terminal), que consegue ficar observando/ouvindo
+os webhooks do stripe e encaminhando para o nosso localhost.
+. Para download do Stripe CLI, seguir o passo a passo no terminal da aplicação (UBUNTU), seguindo o passo 1 da documentação:
+https://stripe.com/docs/stripe-cli 
+Após isso, dar um [stripe login] entrar no link e permitir autorização. Por fim: [stripe listen --forward-to localhost:3000/api/webhooks]
