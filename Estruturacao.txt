@@ -299,3 +299,18 @@ agora podemos buscar um usuário, pelo id dele, dentro do stripe.
 . manageSubscription e webhooks // alterações no commit
 
 
+------------------------------------------FRONTEND JAMStack----------------------------------------------------------------------------------------------------------------------
+##TRABALHANDO COM CMS 
+-- Escolhendo um CMS
+. JAMStack : JavaScript API Markup
+ // Vamos utilizar nessa aplicação o prismic.io
+
+ -- Configurando Prismic CMS
+. Após logar a conta e criar um repositório, passar em "Settings" para o modo legacy do prismic, que é o layout anterior e 
+que foi utilizado pelo Diego durante as aulas.
+. Ao adicionar um post, do tipo Repeatable type, podemos arrastar os campos que queremos ter nos nossos posts.
+
+. Depois da realização dos posts, temos que configurar o prismic para conseguirmos acessas o conteúdo através da aplicação
+Settings --> API & Security --> Mudar o API access para 'Private API' (pois nosso blog é para assinantes)
+Ao criar um Access Token e dando um Add this application, teremos o Permanent access token , QUE É O QUE IREMOS PRECISAR 
+PARA ACESSAR OS CONTEÚDOS DO PRISMIC
