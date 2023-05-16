@@ -282,3 +282,15 @@ chunks. No final, todos os chunks são concatenados e transformados em um Buffer
 . É importante passar o config com bodyParser: false, porque o next tem um formato de entender a requisição (vindo como JSON
 ou formulário. Só que como nesse caso está vindo como uma readable, precisamos desabilitar a configuração padrão do Next)
 
+
+-- Salvando dados do evento
+. Como vamos ouvir mais de um evento na aplicação, vamos trocar o console.log para um switch, dentro do webhook.
+
+. Criar uma pasta _lib dentro de api. Toda pasta que tem _ na frente, ela não é tratada com uma rota na aplicação. 
+Nela, vamos criar um arquivo chamado manageSubscription, com uma função que irá salvar as informações no banco de dados.
+. Para buscar um usuário pelo stripe_customer_id, é preciso criar um índice: user_by_stripe_customer_id no faunaDB. Com isso,
+agora podemos buscar um usuário, pelo id dele, dentro do stripe.
+. Para o manageSubscription:
+    // Buscar o usuário no banco do FaunaDB, com o ID {customerId --> stripe_customer_id}   
+    // Salvar os dados da subscription do usuário no FaunaDB
+    // Dai com isso, teremos uma nova collection no banco, com as subscriptions dos usuários
