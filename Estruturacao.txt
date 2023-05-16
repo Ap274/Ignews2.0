@@ -294,3 +294,8 @@ agora podemos buscar um usuário, pelo id dele, dentro do stripe.
     // Buscar o usuário no banco do FaunaDB, com o ID {customerId --> stripe_customer_id}   
     // Salvar os dados da subscription do usuário no FaunaDB
     // Dai com isso, teremos uma nova collection no banco, com as subscriptions dos usuários
+
+-- Ouvindo mais eventos
+. manageSubscription e webhooks // alterações no commit
+
+
