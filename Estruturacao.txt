@@ -265,3 +265,20 @@ os webhooks do stripe e encaminhando para o nosso localhost.
 . Para download do Stripe CLI, seguir o passo a passo no terminal da aplicação (UBUNTU), seguindo o passo 1 da documentação:
 https://stripe.com/docs/stripe-cli 
 Após isso, dar um [stripe login] entrar no link e permitir autorização. Por fim: [stripe listen --forward-to localhost:3000/api/webhooks]
+
+
+-- Ouvindo eventos do Stripe
+. Quando o stripe envia os webhooks, ele envia em formato de streaming, isto é, os dados não estão prontos todos de uma vez,
+a gente recebe eles por partes. Vamos, com isso, torná-los 'legíveis'
+import { Readable } from "stream";
+. Vamos criar uma função que converte essa readable stream em uma string/um objeto/uma requisição em si.
+
+. Função chamada buffer que recebe uma readable stream; ela cria uma array chamado chunks, que são os pedaços da stream;
+E ela vai percorrendo para cada vez que a gente receber um valor da requisição, ele vai armazenando esse valor dentro de 
+chunks. No final, todos os chunks são concatenados e transformados em um Buffer (amortecedor/parachoque)
+. O req é um readable por padrão, por isso podemos passar ele dentro da função
+  Temos dentro do buf agora a nossa requisição em si!
+
+. É importante passar o config com bodyParser: false, porque o next tem um formato de entender a requisição (vindo como JSON
+ou formulário. Só que como nesse caso está vindo como uma readable, precisamos desabilitar a configuração padrão do Next)
+
