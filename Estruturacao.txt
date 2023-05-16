@@ -314,3 +314,8 @@ que foi utilizado pelo Diego durante as aulas.
 Settings --> API & Security --> Mudar o API access para 'Private API' (pois nosso blog é para assinantes)
 Ao criar um Access Token e dando um Add this application, teremos o Permanent access token , QUE É O QUE IREMOS PRECISAR 
 PARA ACESSAR OS CONTEÚDOS DO PRISMIC
+
+-- Página: Posts
+. Construção da estrutura da página de Posts. Foi criada uma pasta posts em Pages, pois depois irão entrar mais componentes
+de posts dentro dessa pasta, e também para melhor conexão com o styles.
+
