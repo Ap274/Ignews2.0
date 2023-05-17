@@ -318,5 +318,3 @@ PARA ACESSAR OS CONTEÚDOS DO PRISMIC
 -- Página: Posts
 . Construção da estrutura da página de Posts. Foi criada uma pasta posts em Pages, pois depois irão entrar mais componentes
 de posts dentro dessa pasta, e também para melhor conexão com o styles.
-MEU DEUS QUE B.O
-
