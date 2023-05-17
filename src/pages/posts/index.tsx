@@ -1,4 +1,8 @@
 import Head from 'next/head'
+import { GetStaticProps } from 'next'
+import { getPrismicClient } from '../../services/prismic'
+import Prismic from '@prismicio/client'
+
 import styles from './styles.module.scss'
 
 export default function Posts() {
@@ -29,4 +33,24 @@ export default function Posts() {
             </main>
         </>
     )
+}
+
+
+// Precisamos carregar a nossa listagem de Posts, então:
+export const getStaticProps: GetStaticProps = async () => {
+    const prismic = getPrismicClient()
+
+    const response = await prismic.query([
+        Prismic.predicates.at('document.type', 'post')
+    ], {
+        // quais dados queremos buscar dessa aplicação
+        fetch: ['post.title', 'post.content'],
+        pageSize: 100,
+    })
+
+    console.log(JSON.stringify(response, null, 2))
+
+    return {
+        props: {}
+    }
 }

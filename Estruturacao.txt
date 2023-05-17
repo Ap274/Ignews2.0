@@ -318,3 +318,19 @@ PARA ACESSAR OS CONTEÚDOS DO PRISMIC
 -- Página: Posts
 . Construção da estrutura da página de Posts. Foi criada uma pasta posts em Pages, pois depois irão entrar mais componentes
 de posts dentro dessa pasta, e também para melhor conexão com o styles.
+
+-- Consumindo API do Prismic
+. Criar um arquivo chamado prismic.ts e, com isso, adicionar a biblioteca com [yarn add @prismicio/client @prismicio/react] que é o cliente
+do prismic para integrar com o javascript.
+
+. Seguir a documetação: https://prismic.io/docs/setup-nextjs
+npx create-next-app@latest / configurar com o site prismic (liberar acesso), depois fazer as mudanças necessárias no arquivo
+prismicio.ts e no _app.tsx.
+  Como o Diego está usando a versão 5.1.1, vou utilizar nesse projeto ela também, com isso: 
+  [yarn add @prismicio/client@5.1.1]
+
+. É o endereço da minha aplicação no prismic --> Prismic / Settings / API & Security / Use this entry point... (PRISMIC_ENDPOINT)
+  Gerando o console.log no terminal: console.log(response) do index de posts, obtemos alguns dados. O uid é o utilizaremos para 
+gerar o slug - url do projeto. 
+  Dentro do data temos um objeto com o título e o conteúdo. Para analisar completamente o conteúdo desse data:
+  // console.log(JSON.stringify(response, null, 2))
