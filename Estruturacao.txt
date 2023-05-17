@@ -334,3 +334,16 @@ prismicio.ts e no _app.tsx.
 gerar o slug - url do projeto. 
   Dentro do data temos um objeto com o título e o conteúdo. Para analisar completamente o conteúdo desse data:
   // console.log(JSON.stringify(response, null, 2))
+
+-- Listando posts em tela
+. Vamos nesse tópico pegar os posts do prismic e listá-los em tela :D ! 
+Sempre que pudermos fazer formatação de dados logo após consumir os dados da API externa, é melhor para processamento pois
+não precisaremos ficar formatando os valores em tempo de execução do código! 
+
+. Para buscar o title do post de uma forma mais fácil, podemos instalar uma lib chamada prismic-dom [yarn add prismic-dom]
+Ela converte os formatos do prismic para texto ou html, como preferirmos. Quando chamarmos ela no import, dará um erro de 
+tipagem, com isso basta adicionarmos a tipagem por [yarn add @types/prismic-dom -D] como dep. de desenvolvimento
+
+
+
+
