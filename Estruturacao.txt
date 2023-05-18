@@ -344,6 +344,11 @@ não precisaremos ficar formatando os valores em tempo de execução do código!
 Ela converte os formatos do prismic para texto ou html, como preferirmos. Quando chamarmos ela no import, dará um erro de 
 tipagem, com isso basta adicionarmos a tipagem por [yarn add @types/prismic-dom -D] como dep. de desenvolvimento
 
+-- Navegação no Menu
+. Ao utilizar só ancoras, vamos utilizar o recurso do Next de SSR, ou seja, fazer todas as páginas serem renderizadas do total
+zero.
+Com isso, vamos utilizar um componente do next/link chamado Link, onde será passado o href. Esse componente Link tem uma propriedade
+chamada prefetch - ela deixa a página pré recarregada, deixando o acesso mais rápido.
 
 
 
