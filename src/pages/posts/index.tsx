@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import Prismic from '@prismicio/client'
 import { RichText } from 'prismic-dom'
+import Link from 'next/link'
 
 import { getPrismicClient } from '../../services/prismic'
 
@@ -28,11 +29,13 @@ export default function Posts({ posts }) {
             <main className={styles.container}>
                 <div className={styles.posts}>
                     {posts.map(post => (
-                        <a key={post.slug} href="#">
-                            <time>{post.updatedAt}</time>
-                            <strong>{post.title}</strong>
-                            <p>{post.excerpt}</p>
-                        </a>
+                        <Link href={`/posts/${post.slug}`} legacyBehavior>
+                            <a key={post.slug}>
+                                <time>{post.updatedAt}</time>
+                                <strong>{post.title}</strong>
+                                <p>{post.excerpt}</p>
+                            </a>
+                        </Link>
                     ))}
                 </div>
             </main>
@@ -45,7 +48,7 @@ export default function Posts({ posts }) {
 export const getStaticProps: GetStaticProps = async () => {
     const prismic = getPrismicClient()
 
-    const response = await prismic.query([
+    const response = await prismic.query<any>([
         Prismic.predicates.at('document.type', 'post')
     ], {
         // quais dados queremos buscar dessa aplicação

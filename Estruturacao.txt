@@ -361,6 +361,12 @@ chamado ActiveLink. A função cloneElement permite que possamos clonar elemento
 
 ##PÁGINAS ESTÁTICAS
 -- Página: Post
+. Pagina do post em si, para quem é assinante. Dentro das paginas e das api routes, quando uma página é dinâmica, podemos
+utilizar [] para o nome do parâmetro e dentro nós passamos como gostaríamos de receber o nome desse parâmetro. Slug é o 
+título do post basicamente.
+. Para carregar os posts, podemos utilizar o getStatic or o getServer. E para isso, precisaremos saber se ele tem uma sessão ativa
+([slug.tsx])
+
 
 
 --Validando assinatura ativa
