@@ -350,5 +350,30 @@ zero.
 Com isso, vamos utilizar um componente do next/link chamado Link, onde será passado o href. Esse componente Link tem uma propriedade
 chamada prefetch - ela deixa a página pré recarregada, deixando o acesso mais rápido.
 
+-- Componente: ActiveLink
+. Dentro de next/router nós temos um hook chamado useRouter, que retorna algumas informações. A informação que iremos precisar
+nesse projeto é o asPath, que retorna a rota que ta sendo acessada (com um console.log(asPath)) podemos ver o resultado
+da rota no console
+
+. Se a cada link tivermos que trabalhar desse modo com o asPath, fornecerá um trabalho maior. Portanto, criaremos um componente
+chamado ActiveLink. A função cloneElement permite que possamos clonar elementos e modificar coisas nele
+
+
+##PÁGINAS ESTÁTICAS
+-- Página: Post
+
+
+--Validando assinatura ativa
+
+
+-- Página: Preview do post
+
+
+-- Gerando previews estáticos
+
+
+-- Finalização do módulo
+
+
 
 
