@@ -5,7 +5,7 @@ import GithubProvider from "next-auth/providers/github"
 
 import { fauna } from '../../../services/fauna'
 
-export const authOptions = {
+export default NextAuth({
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
@@ -19,7 +19,49 @@ export const authOptions = {
     }),
   ],
 
+  jwt: {
+    secret: process.env.NEXTAUTH_SECRET,
+  },
+
   callbacks: {
+    async session({session}) {
+    // nos permite modificar os dados do session, que estão ali. Retornando o session com os dados modificados. Verificar se o cliente tem uma assinatura ativa
+      try {
+        const userActiveSubscription = await fauna.query<string>(
+          q.Get(
+            q.Intersection([
+              q.Match(
+                q.Index('subscription_by_user_ref'),
+                q.Select(
+                  "ref",
+                  q.Get(
+                    q.Match(
+                      q.Index('user_by_email'),
+                      q.Casefold(session.user.email)
+                    )
+                  )
+                )
+              ),
+              q.Match(
+                q.Index('subscription_by_status'),
+                "active"
+              )
+            ])
+          )
+        )
+        return {
+          ...session,
+          activeSubscription: userActiveSubscription
+        }
+      } catch (e){
+        console.log(e)
+        return {
+          ...session,
+          activeSubscription: null,
+        }
+      }  
+    },      
+
     async signIn({user, account, profile }) {
       // console.log(user)
       const { email } = user
@@ -55,5 +97,5 @@ export const authOptions = {
       }      
     }
   }
-}
-export default NextAuth(authOptions)
+})
+

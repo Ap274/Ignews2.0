@@ -40,12 +40,19 @@ export default function Post( {post} : PostProps) {
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
     // para sabermos se o usuário está logado:
     const session = await getSession({ req })
+    console.log(session)
     // teremos acesso ao post que queremos carregar:
     const { slug } = params;
 
-    // if (!session) {
-    // }
-
+    if (!session.activeSubscription) {
+        return {
+            redirect: {
+                destination: '/',
+                permanent: false,
+            }
+        }
+    }
+       
     // precisamos buscar o client do prismic
     const prismic = getPrismicClient(req) 
     const response = await prismic.getByUID<any>('post', String(slug), {})

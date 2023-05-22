@@ -368,9 +368,11 @@ título do post basicamente.
 ([slug.tsx])
 
 
-
 --Validando assinatura ativa
+. Vamos nesse commit validar se a assinatura do usuário está ativa, para que esse consiga acessar a página do post completo.
 
+(PARA OS ERROS, documentação: https://next-auth.js.org/configuration/options#secret)
+. Para fazer um próprio redirecionamento de dentro do if ([slug.tsx]) é só não retornar as props e sim o "redirect"
 
 -- Página: Preview do post
 
