@@ -383,9 +383,8 @@ A função splice é para pegar apenas o conteúdo desejado do artigo, no caso, 
 -- Gerando previews estáticos
 . No getStaticProps é bom retornarmos a opção revalidate, que diz de quanto em quanto tempo o conteúdo da página vai ser recarregado.
 
-
 -- Finalização do módulo
-
+. Conclusão do módulo, finalização da aplicação :D !!!
 
 
 
